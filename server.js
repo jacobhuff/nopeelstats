@@ -88,7 +88,7 @@ app.get('/retrievestats', async (req, res) => {
       // create user object
       let currUser = {};
       currUser.username = user.username;
-      currUser.ratings = user.stats.ratings;
+      if (currUser.ratings !== null) currUser.ratings = user.stats.ratings;
 
       // get hero stats
       let heroStats = user.stats;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import User from '../components/User';
 import axios from 'axios'
+import {BACKEND_URL} from '../config';
 
 class Home extends Component {
 
@@ -12,7 +13,7 @@ class Home extends Component {
       }
 
     componentDidMount() {
-        axios.get('/retrievestats')
+        axios.get(BACKEND_URL)
         .then((res) => {
             console.log(res.data);
             this.setState({ stats: res.data });
