@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.container {
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 0;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+.user {
+    overflow: auto;
+    margin: 15px;
+    background-color: rgba(16, 25, 47, 0.95);
+    border-radius: 5px;
+    color: white;
+}
+.user-info, .user-stats, .user-name, .hero {
+    width: 100%;
+}
+.user-name {
+    float: left;
+    margin: 10px 0 20px 0;
+    font-size: 30px;
+}
+.user-ratings {
+    width: 600px;
+    margin: 0 auto;
+}
+#role-span {
+    font-weight: bold;
+}
+.user-rating {
+    width: 200px;
+    height: 50px;
+    float: left;
+}
+.hero {
+   float: left;
+   margin: 10px 0 10px 0;
+   height: 150px;
+}
+.hero-info {
+    float: left;
+    width: 120px;
+    margin-top: 7px;
+}
+.hero-name {
+    float: left;
+    height: 10px;
+    text-align: center;
+    width: 100%;
+}
+.hero-portrait {
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+}
+.hero-portrait img {
+    height: 80px;
+    width: 80px;
+    border: 1px solid white;
+}
+.hero-stats {
+    float: left;
+    height: 100%;
+    width: 540px;
+}
+.hero-stat {
+    float: left;
+    height: 50px;
+    width: 150px;
+    margin-top: 50px;
+    margin-left: 30px;
+}
+.hero-stat-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.hero-specific-stat {
+    margin-top: 5px;
+}
+#wins {
+    font-weight: bold;
+    color: rgb(79, 144, 110);
+}
+#losses {
+    font-weight: bold;
+    color: crimson;
+}
