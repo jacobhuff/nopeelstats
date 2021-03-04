@@ -24,12 +24,14 @@ connection.once('open', () => {
 
 /* GET STATS */
 const gamers = ['GroutNasty#1617', 'NekoNekoNyan#1907', 'HaKobo#11997', 'cottonballer#11958', 'realboty#1665', 'JohnV1#1190'];
-const update = setInterval(() => {
-  getStats();
-  console.log("Updated Stats");
-}, 86400000)
+function update() {
+  setInterval(async () => {
+    await getStats();
+    console.log("Updated Stats");
+  }, 86400000);
+}
+update();
 /* GET STATS */
-
 
 /* UPDATE STATS TO DATABASE */
 async function getStats() {
@@ -88,7 +90,7 @@ app.get('/retrievestats', async (req, res) => {
       // create user object
       let currUser = {};
       currUser.username = user.username;
-      if (currUser.ratings !== null) currUser.ratings = user.stats.ratings;
+      currUser.ratings = user.stats.ratings;
 
       // get hero stats
       let heroStats = user.stats;
