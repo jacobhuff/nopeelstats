@@ -16,15 +16,20 @@ app.use(express.static('client/build'));
 
 const uri = process.env.ATLAS_URI;
 
-try {
-  await mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true})
-  const connection = mongoose.connection;
-  connection.once('open', () => {
-    console.log('DB connected');
-  });
-} catch(err) {
-  console.log('DB Error: ' + err);
+// DB Connection
+getConnection = async () => {
+  try {
+    await mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true})
+    const connection = mongoose.connection;
+    connection.once('open', () => {
+      console.log('DB connected');
+    });
+  } catch(err) {
+    console.log('DB Error: ' + err);
+  }
 }
+
+getConnection();
 
 /* GET STATS */
 const gamers = ['GroutNasty#1617', 'NekoNekoNyan#1907', 'HaKobo#11997', 'cottonballer#11958', 'realboty#1665', 'JohnV1#1190'];
