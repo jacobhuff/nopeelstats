@@ -20,10 +20,10 @@ const uri = process.env.ATLAS_URI;
 getConnection = async () => {
   try {
     await mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true})
-    const connection = mongoose.connection;
-    connection.once('open', () => {
-      console.log('DB connected');
-    });
+    .then(() => {
+      console.log('DB Connected')
+    })
+    .catch(err => console.log(err))
   } catch(err) {
     console.log('DB Error: ' + err);
   }
@@ -82,7 +82,6 @@ async function getStats() {
     })
   }
 }
-
 /* UPDATE STATS TO DATABASE */
 
 app.get('/retrievestats', async (req, res) => {
