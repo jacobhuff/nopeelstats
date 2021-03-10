@@ -15,17 +15,24 @@ class Home extends Component {
     componentDidMount() {
         axios.get(BACKEND_URL)
         .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             this.setState({ stats: res.data });
         })
     }
 
     render() {
         return (
+            // <div>
+            //     Updating DB
+            // </div>
             <div className="container">
-                {this.state.stats.map((user) => (
-                    <User key={user.username} user={user}/>
-                ))}
+                {
+                    this.state.stats.map((user) => (
+                        (user.heroes.length === 0)
+                        ? (<div></div>)
+                        : (<User key={user.username} user={user}/>)
+                    ))
+                }
                 <div></div>
             </div>
         )

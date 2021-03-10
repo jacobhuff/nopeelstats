@@ -32,15 +32,18 @@ getConnection = async () => {
 getConnection();
 
 /* GET STATS */
-const gamers = ['GroutNasty#1617', 'NekoNekoNyan#1907', 'HaKobo#11997', 'cottonballer#11958', 'realboty#1665', 'JohnV1#1190'];
-function update() {
-  setInterval(async () => {
-    await getStats();
-    console.log("Updated Stats");
-  }, 86400000);
-}
-update();
+const gamers = ['GroutNasty#1617', 'NekoNekoNyan#1907', 'HaKobo#11997', 'cottonballer#11958', 'realboty#1665', 'TruBuddhaTV#1146', 'JohnV1#1190'];
+// const gamersToAdd = ['OGmrAzimuth#1952'];
+// function update() {
+//   setInterval(async () => {
+//     await getStats();
+//     console.log("Updated Stats");
+//   }, 86400000);
+// }
+// update();
 /* GET STATS */
+
+
 
 /* UPDATE STATS TO DATABASE */
 async function getStats() {
@@ -51,7 +54,14 @@ async function getStats() {
       await ostat.getProfile(gamer,'us', 'pc').then(r => {
         var ratings;
         var getRatings = new Promise((resolve, reject) => {
-          if (r.ratings.length === 0 || r.ratings.length === null) {
+          console.log(r.ratings);
+          if (r.ratings === null) {
+            ratings = 'NOT_PLACED';
+          }
+          else if (r.ratings.length === null) {
+            ratings = 'NOT_PLACED';
+          }
+          else if (r.ratings.length === 0) {
             ratings = 'NOT_PLACED';
           }
           else if (r.ratings === undefined) {
@@ -83,6 +93,10 @@ async function getStats() {
   }
 }
 /* UPDATE STATS TO DATABASE */
+
+/* ADD NEW PLAYER */
+// getStats();
+/* ADD NEW PLAYER */
 
 app.get('/retrievestats', async (req, res) => {
 
