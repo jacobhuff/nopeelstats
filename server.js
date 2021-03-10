@@ -121,7 +121,7 @@ app.get('/retrievestats', async (req, res) => {
         for (var hero in heroStats) {
           let currHero = {};
           if (hero !== 'allHeroes' && heroStats[hero].game !== undefined) {
-            if (heroStats[hero].game.gamesPlayed >= 10) {
+            if (heroStats[hero].game.gamesPlayed >= 5) {
               currHero.hero = hero;
               currHero.wins = heroStats[hero].game.gamesWon;
               currHero.losses = heroStats[hero].game.gamesLost;
