@@ -34,13 +34,13 @@ getConnection();
 /* GET STATS */
 const gamers = ['GroutNasty#1617', 'NekoNekoNyan#1907', 'HaKobo#11997', 'cottonballer#11958', 'realboty#1665', 'TruBuddhaTV#1146', 'JohnV1#1190'];
 // const gamersToAdd = ['OGmrAzimuth#1952'];
-// function update() {
-//   setInterval(async () => {
-//     await getStats();
-//     console.log("Updated Stats");
-//   }, 86400000);
-// }
-// update();
+function update() {
+  setInterval(async () => {
+    await getStats();
+    console.log("Updated Stats");
+  }, 86400000);
+}
+update();
 /* GET STATS */
 
 
