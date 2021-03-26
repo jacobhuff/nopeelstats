@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import User from '../components/User';
 import axios from 'axios'
 import {BACKEND_URL} from '../config';
+import Navbar from '../components/Navbar'
 
 class Home extends Component {
 
@@ -15,27 +16,33 @@ class Home extends Component {
     componentDidMount() {
         axios.get(BACKEND_URL)
         .then((res) => {
-            // console.log(res.data);
+            console.log(res.data);
             this.setState({ stats: res.data });
         })
     }
-
+    
     render() {
+
         return (
             // <div>
             //     Updating DB
             // </div>
-            <div className="container">
-                {
-                    this.state.stats.map((user) => (
-                        (user.heroes.length === 0)
-                        ? (<div></div>)
-                        : (<User key={user.username} user={user}/>)
-                    ))
-                }
-                <div></div>
+            
+            <div>
+                <Navbar />
+                <div className="container">
+                
+                    {
+                        this.state.stats.map((user) => (
+                            (user.heroes.length === 0)
+                            ? (<div></div>)
+                            : (<User key={user.username} user={user}/>)
+                        ))
+                    }
+                </div>
             </div>
         )
+        
     }
 }
 

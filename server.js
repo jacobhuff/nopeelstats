@@ -32,7 +32,7 @@ getConnection = async () => {
 getConnection();
 
 /* GET STATS */
-const gamers = ['GroutNasty#1617', 'NekoNekoNyan#1907', 'HaKobo#11997', 'cottonballer#11958', 'realboty#1665', 'TruBuddhaTV#1146', 'JohnV1#1190'];
+const gamers = ['GroutNasty#1617', 'NekoNekoNyan#1907', 'HaKobo#11997', 'cottonballer#11958', 'realboty#1665', 'TruBuddhaTV#1146', 'JohnV1#1190', 'ChkUrAzimuth#1290'];
 // const gamersToAdd = ['OGmrAzimuth#1952'];
 function update() {
   setInterval(async () => {
@@ -40,7 +40,7 @@ function update() {
     console.log("Updated Stats");
   }, 86400000);
 }
-update();
+// update();
 /* GET STATS */
 
 

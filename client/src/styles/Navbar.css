@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.navbar {
+    font-family: 'Montserrat', sans-serif;
+    width: 770px;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 50px;
+    background-color: rgba(16, 25, 47, 0.95);
+}
+.games {
+    margin: 0 auto;
+    height: 50px;
+    width: 480px;
+    text-align: center;
+}
+.game {
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    margin: 0 10px;
+    float: left;
+    color: white;
+}
+a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
