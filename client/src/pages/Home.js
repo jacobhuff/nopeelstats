@@ -16,7 +16,7 @@ class Home extends Component {
     componentDidMount() {
         axios.get(BACKEND_URL)
         .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             this.setState({ stats: res.data });
         })
     }

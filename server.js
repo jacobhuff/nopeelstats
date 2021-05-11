@@ -44,51 +44,58 @@ update();
 /* GET STATS */
 
 
-
 /* UPDATE STATS TO DATABASE */
 async function getStats() {
   for (const gamer of gamers) {
     await ostat.getStat(gamer, 'us', 'pc').then(async items => {
-      let heroStats = items.competitiveStats.careerStats;
 
-      await ostat.getProfile(gamer,'us', 'pc').then(r => {
-        var ratings;
-        var getRatings = new Promise((resolve, reject) => {
-          console.log(r.ratings);
-          if (r.ratings === null) {
-            ratings = 'NOT_PLACED';
-          }
-          else if (r.ratings.length === null) {
-            ratings = 'NOT_PLACED';
-          }
-          else if (r.ratings.length === 0) {
-            ratings = 'NOT_PLACED';
-          }
-          else if (r.ratings === undefined) {
-            ratings = 'UNDEFINED'
-          }
-          else {
-            ratings = [];
-            for (let i = 0; i < r.ratings.length; i++) {
-              let currRating = {};
-              currRating.role = r.ratings[i].role;
-              currRating.sr = r.ratings[i].level;
-              ratings.push(currRating);
+      var heroStats;
+      if (items.error) {
+        heroStats = 'error';
+      } else {
+        heroStats = items.competitiveStats.careerStats;
+      }
+
+      if (heroStats !== 'error') {
+        await ostat.getProfile(gamer,'us', 'pc').then(r => {
+          var ratings;
+          var getRatings = new Promise((resolve, reject) => {
+            if (r.ratings === null) {
+              ratings = 'NOT_PLACED';
+            }
+            else if (r.ratings.length === null) {
+              ratings = 'NOT_PLACED';
+            }
+            else if (r.ratings.length === 0) {
+              ratings = 'NOT_PLACED';
+            }
+            else if (r.ratings === undefined) {
+              ratings = 'UNDEFINED'
+            }
+            else {
+              ratings = [];
+              for (let i = 0; i < r.ratings.length; i++) {
+                let currRating = {};
+                currRating.role = r.ratings[i].role;
+                currRating.sr = r.ratings[i].level;
+                ratings.push(currRating);
+              }
             }
             heroStats.ratings = ratings;
-          }
-          resolve();
+            resolve();
+          });
+
         });
-
-      });
-
-      var query = { username: gamer };
-      var update = { username: gamer, stats: heroStats };
-      var options = { upsert: true, new: true, setDefaultsOnInsert: true, useFindAndModify: false };
       
-      Stats.findOneAndUpdate(query, update, options, (err) => {
-        if (err) console.log(err);
-      })
+
+        var query = { username: gamer };
+        var update = { username: gamer, stats: heroStats };
+        var options = { upsert: true, new: true, setDefaultsOnInsert: true, useFindAndModify: false };
+      
+        Stats.findOneAndUpdate(query, update, options, (err) => {
+          if (err) console.log(err);
+        })
+      }
     })
   }
 }
